@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موسوعة التخدير</title>
+    <title>موسوعة التخدير - الاختبارات</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         *{
             text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         /* أنماط أساسية */
         :root {
@@ -34,18 +37,13 @@
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: var(--transition);
             line-height: 1.6;
+            font-family: 'Tajawal', sans-serif;
+            min-height: 100vh;
         }
 
         /* أنماط شريط التنقل */
@@ -55,15 +53,17 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
         }
 
         .navbar-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0.8rem 2rem;
+            padding: 0.8rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
 
         .logo {
@@ -72,8 +72,9 @@
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 700;
-            font-size: 1.7rem;
+            font-size: clamp(1.2rem, 4vw, 1.7rem);
             transition: var(--transition);
+            flex-shrink: 0;
         }
 
         .logo:hover {
@@ -81,8 +82,8 @@
         }
 
         .logo i {
-            margin-left: 0.6rem;
-            font-size: 2rem;
+            margin-left: 0.5rem;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             color: var(--primary-color);
         }
 
@@ -94,55 +95,17 @@
             font-weight: 800;
         }
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            gap: 2.5rem;
-            margin-right: 2rem;
-        }
-
-        .nav-item a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-item a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-item a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
-            transition: var(--transition);
-            border-radius: 3px;
-        }
-
-        .nav-item a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
         .nav-buttons {
             display: flex;
-            gap: 1.2rem;
+            gap: 1rem;
+            align-items: center;
         }
 
         .btn {
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             cursor: pointer;
             transition: var(--transition);
             border: none;
@@ -150,6 +113,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            white-space: nowrap;
         }
 
         .btn-primary {
@@ -184,6 +148,7 @@
             color: var(--text-color);
             font-size: 1.8rem;
             transition: var(--transition);
+            padding: 0.5rem;
         }
 
         .hamburger:hover {
@@ -195,9 +160,10 @@
         .mobile-menu {
             display: none;
             background-color: var(--card-bg);
-            padding: 1.5rem 2rem;
+            padding: 1.5rem 1rem;
             box-shadow: var(--shadow);
             animation: fadeIn 0.3s ease-out;
+            width: 100%;
         }
 
         @keyframes fadeIn {
@@ -209,50 +175,34 @@
             display: block;
         }
 
-        .mobile-nav-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .mobile-nav-item a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.2rem;
-            display: block;
-            padding: 0.7rem 0;
-            transition: var(--transition);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .mobile-nav-item a:hover {
-            color: var(--primary-color);
-            padding-right: 10px;
-        }
-
         .mobile-buttons {
             display: flex;
-            gap: 1.2rem;
-            margin-top: 2rem;
-            flex-direction: row;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .mobile-buttons .btn {
+            width: 100%;
+            justify-content: center;
         }
 
         /* المحتوى الرئيسي */
         .main-content {
-            padding: 3rem 2rem;
+            padding: 2rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .hero {
             text-align: center;
-            padding: 3rem 0;
+            padding: 2rem 0;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
             margin-bottom: 1rem;
             color: var(--primary-color);
             font-weight: 800;
@@ -260,145 +210,333 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            line-height: 1.3;
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 3vw, 1.1rem);
             max-width: 700px;
             margin: 0 auto 2rem;
             color: var(--text-color);
+            line-height: 1.6;
         }
 
-        .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-    align-items: stretch;
-}
-
-.feature-card {
-    display: flex;
-    flex-direction: column;
-}
-
-.feature-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.feature-content a {
-    margin-top: auto;
-}
-
-        .feature-card {
+        /* أنماط الاختبار */
+        .quiz-container {
             background-color: var(--card-bg);
             border-radius: 12px;
-            overflow: hidden;
+            padding: 1.5rem;
+            margin-top: 2rem;
             box-shadow: var(--shadow);
-            transition: var(--transition);
             border-top: 4px solid var(--primary-color);
+            width: 100%;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .feature-icon {
-            height: 120px;
+        .question-number {
+            font-size: clamp(1.1rem, 3vw, 1.2rem);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .quiz-timer {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .quiz-progress {
+            background-color: var(--light-color);
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .question-container {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .question-text {
+            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            line-height: 1.5;
+            text-align: left;
+            direction: ltr;
+            flex: 1;
+        }
+
+        .help-icon {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+            font-size: 1.1rem;
         }
 
-        .feature-content {
+        .help-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .explanation {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-right: 4px solid var(--primary-color);
+            display: none;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            line-height: 1.6;
+        }
+
+        .explanation.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-align: left;
+            direction: ltr;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            line-height: 1.4;
+        }
+
+        .option:hover {
+            background-color: var(--border-color);
+            transform: translateY(-2px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(106, 27, 154, 0.1);
+        }
+
+        .option.correct {
+            border-color: #4caf50;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .option.incorrect {
+            border-color: #f44336;
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .quiz-actions .btn {
+            flex: 1;
+            min-width: 140px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            padding: 0.8rem 1rem;
+        }
+
+        .result-container {
+            text-align: center;
             padding: 1.5rem;
         }
 
-        .feature-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+        .result-score {
+            font-size: clamp(2rem, 8vw, 3rem);
+            font-weight: 700;
             color: var(--primary-color);
+            margin: 1rem 0;
         }
 
-        .feature-content p {
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
+        .result-message {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
-        .contact-section {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 4rem;
-            text-align: center;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .contact-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .contact-btn {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            margin-top: 1rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(106, 27, 154, 0.3);
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(106, 27, 154, 0.4);
-        }
-
-        footer {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            padding: 2rem 0;
-            margin-top: 4rem;
-            text-align: center;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-content p {
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
+        .result-actions {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
-        .social-links a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            transition: var(--transition);
+        .result-actions .btn {
+            min-width: 160px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            padding: 0.8rem 1.5rem;
         }
 
-        .social-links a:hover {
+        .detailed-results {
+            margin-top: 2rem;
+            text-align: right;
+        }
+
+        .detailed-results h3 {
             color: var(--primary-color);
-            transform: translateY(-3px);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
         }
 
-        .copyright {
-            font-size: 0.9rem;
+        .question-review {
+            background-color: var(--light-color);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-right: 4px solid var(--border-color);
+        }
+
+        .question-review.correct {
+            border-right-color: #4caf50;
+        }
+
+        .question-review.incorrect {
+            border-right-color: #f44336;
+        }
+
+        .review-question {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            text-align: left;
+            direction: ltr;
+            line-height: 1.5;
+        }
+
+        .review-answer {
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            text-align: right;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            line-height: 1.4;
+        }
+
+        .user-answer {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-right: 3px solid #3b82f6;
+        }
+
+        .correct-answer {
+            background-color: rgba(34, 197, 94, 0.1);
+            border-right: 3px solid #22c55e;
+        }
+
+        .answer-status {
+            display: inline-block;
+            margin-right: 0.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .answer-status.correct {
+            color: #22c55e;
+        }
+
+        .answer-status.incorrect {
+            color: #ef4444;
+        }
+
+        .test-history {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+            width: 100%;
+        }
+
+        .test-history h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-date {
             color: var(--text-color);
-            opacity: 0.8;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .history-score {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .download-btn .btn {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            padding: 0.8rem 1.5rem;
         }
 
         /* زر تبديل الوضع الداكن/الفاتح */
@@ -422,82 +560,193 @@
             justify-content: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            font-size: 1.2rem;
         }
 
         #themeToggle:hover {
             transform: scale(1.1);
         }
 
-        #themeToggle i {
-            font-size: 1.2rem;
+        /* أنماط متجاوبة */
+        /* هواتف صغيرة - أقل من 576px */
+        @media (max-width: 575.98px) {
+            .navbar-container {
+                padding: 0.7rem 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo i {
+                font-size: 1.3rem;
+                margin-left: 0.3rem;
+            }
+            
+            .btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem 0.8rem;
+            }
+            
+            .hero {
+                padding: 1.5rem 0;
+            }
+            
+            .quiz-container {
+                padding: 1rem;
+            }
+            
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            
+            .help-icon {
+                align-self: flex-end;
+            }
+            
+            .quiz-actions {
+                flex-direction: column;
+            }
+            
+            .quiz-actions .btn {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .result-actions .btn {
+                width: 100%;
+            }
+            
+            .history-item {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
-        /* أنماط متجاوبة */
+        /* هواتف متوسطة - 576px إلى 767px */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .navbar-container {
+                padding: 0.7rem 1rem;
+            }
+            
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+            
+            .quiz-container {
+                padding: 1.2rem;
+            }
+        }
+
+        /* أجهزة لوحية - 768px إلى 991px */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .navbar-container {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .quiz-container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* لابتوب - 992px إلى 1199px */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .navbar-container {
+                padding: 0.8rem 2rem;
+            }
+            
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* شاشات كبيرة - 1200px فما فوق */
+        @media (min-width: 1200px) {
+            .navbar-container {
+                padding: 0.8rem 2rem;
+            }
+            
+            .main-content {
+                padding: 3rem 2rem;
+            }
+        }
+
+        /* إخفاء قائمة الجوال في الشاشات الكبيرة */
+        @media (min-width: 993px) {
+            .mobile-menu {
+                display: none !important;
+            }
+            
+            .hamburger {
+                display: none !important;
+            }
+        }
+
+        /* إظهار قائمة الجوال في الشاشات الصغيرة */
         @media (max-width: 992px) {
-            .nav-menu, .nav-buttons {
+            .nav-buttons {
                 display: none;
             }
 
             .hamburger {
                 display: block;
             }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .logo i {
-                font-size: 1.8rem;
-            }
         }
 
-        @media (max-width: 768px) {
-            .navbar-container {
-                padding: 0.7rem 1.2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .mobile-buttons {
-                flex-direction: column;
-                gap: 1rem;
+        /* تحسينات للشاشات الصغيرة جدًا */
+        @media (max-width: 360px) {
+            .logo-text {
+                font-size: 1rem;
             }
             
             .btn {
-                width: 100%;
-                padding: 0.8rem;
+                padding: 0.4rem 0.6rem;
+                font-size: 0.8rem;
             }
             
-            .features {
-                grid-template-columns: 1fr;
+            .question-text {
+                font-size: 1rem;
+            }
+            
+            .option {
+                padding: 0.8rem;
+                font-size: 0.85rem;
             }
         }
 
-        @media (max-width: 576px) {
-            .logo {
-                font-size: 1.3rem;
+        /* منع التكبير التلقائي على iOS */
+        @supports (-webkit-touch-callout: none) {
+            input, select, textarea {
+                font-size: 16px;
+            }
+        }
+
+        /* تحسين الأداء على الأجهزة المحمولة */
+        @media (hover: none) {
+            .option:hover {
+                transform: none;
+                background-color: var(--light-color);
             }
             
-            .logo i {
-                font-size: 1.5rem;
+            .btn:hover {
+                transform: none;
             }
             
-            .mobile-menu {
-                padding: 1.2rem;
-            }
-            
-            .mobile-nav-item a {
-                font-size: 1.1rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
+            .help-icon:hover {
+                transform: none;
             }
         }
     </style>
@@ -510,15 +759,9 @@
                 <span class="logo-text">موسوعة التخدير</span>
             </a>
             
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#lectures">المحاضرات</a></li>
-                <li class="nav-item"><a href="#exams">الامتحانات</a></li>
-                <li class="nav-item"><a href="#library">المكتبة</a></li>
-            </ul>
-            
             <div class="nav-buttons">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-envelope" style="margin-left: 8px;"></i>
+                <a href="https://t.me/Encyclopedia_of_Anesthesia" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
                     تواصل معنا
                 </a>
             </div>
@@ -529,15 +772,9 @@
         </div>
         
         <div class="mobile-menu">
-            <ul class="mobile-nav-menu">
-                <li class="mobile-nav-item"><a href="#lectures">المحاضرات</a></li>
-                <li class="mobile-nav-item"><a href="#exams">الامتحانات</a></li>
-                <li class="mobile-nav-item"><a href="#library">المكتبة</a></li>
-            </ul>
-            
             <div class="mobile-buttons">
-                <a href="#contact" class="btn btn-primary" style="width: 100%;">
-                    <i class="fas fa-envelope" style="margin-left: 8px;"></i>
+                <a href="https://t.me/Encyclopedia_of_Anesthesia" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
                     تواصل معنا
                 </a>
             </div>
@@ -546,66 +783,27 @@
 
     <main class="main-content">
         <section class="hero">
-            <h1>مرحبًا بكم في موسوعة التخدير</h1>
-            <p>منصة متكاملة لتعلم التخدير والرعاية التخديرية، نقدم لكم أحدث المحاضرات والامتحانات والمصادر العلمية.</p>
-        </section>
-
-        <section class="features" id="features">
-            <div class="feature-card" id="lectures">
-                <div class="feature-icon">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-                <div class="feature-content">
-                    <h3>المحاضرات</h3>
-                    <p>مجموعة شاملة من المحاضرات في مختلف تخصصات التخدير</p>
-                    <a href="#" class="btn btn-primary" style="width: 100%;">استكشف المحاضرات</a>
-                </div>
-            </div>
-
-            <div class="feature-card" id="exams">
-                <div class="feature-icon">
-                    <i class="fas fa-file-alt"></i>
-                </div>
-                <div class="feature-content">
-                    <h3>الامتحانات</h3>
-                    <p>بنك أسئلة شامل مع إجابات نموذجية لمساعدتك في التحضير للامتحانات والتقييمات.</p>
-                    <a href="exams.html" class="btn btn-primary" style="width: 100%;">اختبر معرفتك</a>
-                </div>
-            </div>
-
-            <div class="feature-card" id="library">
-                <div class="feature-icon">
-                    <i class="fas fa-book-open"></i>
-                </div>
-                <div class="feature-content">
-                    <h3>المكتبة</h3>
-                    <p>مكتبة ضخمة تحتوي على أهم المراجع والكتب العلمية في مجال التخدير والعناية المركزة.</p>
-                    <a href="#" class="btn btn-primary" style="width: 100%;">تصفح المكتبة</a>
-                </div>
+            <h1>اختبارات العناية المركزة الوزارية</h1>
+            <p>اختبر معرفتك في مادة العناية المركزة من خلال مجموعة شاملة من الأسئلة الوزارية مع إجابات نموذجية.</p>
+            <div class="download-btn">
+                <button id="downloadPdf" class="btn btn-outline">
+                    <i class="fas fa-download" style="margin-left: 8px;"></i>
+                    تحميل الأسئلة بصيغة PDF
+                </button>
             </div>
         </section>
 
-        <section class="contact-section" id="contact">
-            <h2>تواصل معنا</h2>
-            <p>للاستفسارات أو المقترحات، لا تتردد في التواصل معنا عبر البريد الإلكتروني أو وسائل التواصل الاجتماعي.</p>
-            <a href="mailto:info@anesthesia-encyclopedia.com" class="contact-btn">
-                <i class="fas fa-envelope" style="margin-left: 8px;"></i>
-                إرسال رسالة
-            </a>
+        <section class="quiz-container" id="quiz-section">
+            <!-- سيتم ملء هذا القسم ديناميكيًا بواسطة JavaScript -->
+        </section>
+
+        <section class="test-history" id="history-section">
+            <h3>سجل الاختبارات السابقة</h3>
+            <div id="history-list">
+                <!-- سيتم ملء هذا القسم ديناميكيًا بواسطة JavaScript -->
+            </div>
         </section>
     </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p class="copyright">جميع الحقوق محفوظة &copy; <span id="year"></span> محمد إحسان</p>
-        </div>
-    </footer>
 
     <!-- زر تبديل الوضع الداكن/الفاتح -->
     <div class="theme-switcher">
@@ -632,17 +830,6 @@
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
                 }
-            });
-            
-            // إغلاق القائمة عند النقر على رابط
-            const mobileLinks = document.querySelectorAll('.mobile-nav-item a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                    const icon = hamburger.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                });
             });
             
             // تبديل الوضع الداكن/الفاتح
@@ -678,28 +865,630 @@
                 }
             });
 
-            // إضافة السنة الحالية في حقوق النشر
-            document.getElementById('year').textContent = new Date().getFullYear();
+            // بيانات الأسئلة مع الشروحات
+            const questions = [
+                {
+                    question: "What does an electrocardiogram (ECG or EKG) primarily represent?",
+                    options: [
+                        "Blood pressure changes",
+                        "Electrical activity of the heart",
+                        "Cardiac muscle contraction",
+                        "Oxygen saturation levels",
+                        "Hormonal fluctuations"
+                    ],
+                    correctAnswer: 1,
+                    explanation: "تخطيط القلب الكهربائي (ECG) يمثل النشاط الكهربائي للقلب. يسجل الإشارات الكهربائية الناتجة عن انقباض واسترخاء عضلة القلب، وليس التغيرات الميكانيكية أو الكيميائية."
+                },
+                {
+                    question: "All the following are one the properties of the cardiac cells except one",
+                    options: [
+                        "Automaticity",
+                        "Excitability",
+                        "Conductivity",
+                        "Temperature regulation",
+                        "Contractility"
+                    ],
+                    correctAnswer: 3,
+                    explanation: "الخلايا القلبية تتميز بأربع خصائص رئيسية: النظم الذاتي، الاستثارة، الناقلية، والقدرة على الانقباض. تنظيم الحرارة ليس من خصائص الخلايا القلبية بل هو وظيفة جهازية."
+                },
+                {
+                    question: "Which aspect of the heart is represented by ECG lead III?",
+                    options: [
+                        "Inferior",
+                        "Lateral",
+                        "Anterior",
+                        "Posterior",
+                        "Septal"
+                    ],
+                    correctAnswer: 0,
+                    explanation: "المسرى الثالث (Lead III) في تخطيط القلب يمثل الجدار السفلي (Inferior) للقلب. هذا المسرى يساعد في تشخيص احتشاء الجدار السفلي للبطين الأيسر."
+                },
+                {
+                    question: "ECG changes in hypokalemia are all correct except",
+                    options: [
+                        "Flat T wave",
+                        "Inversed T wave",
+                        "Prolong PR",
+                        "ST depression",
+                        "Inversed U wave"
+                    ],
+                    correctAnswer: 4,
+                    explanation: "في نقص بوتاسيوم الدم، تظهر تغيرات في تخطيط القلب تشمل: تسطح موجة T، إطالة فترة PR، وانخفاض قطعة ST. موجة U المقلوبة ليست من علامات نقص البوتاسيوم بل قد تظهر في حالات أخرى."
+                },
+                {
+                    question: "Transmits impulses to bundle branches below AV node",
+                    options: [
+                        "SA node",
+                        "AV node",
+                        "Purkinji system",
+                        "Bundle of HIS",
+                        "None of the above"
+                    ],
+                    correctAnswer: 3,
+                    explanation: "حزمة هيس (Bundle of HIS) هي التي تنقل النبضات الكهربائية من العقدة الأذينية البطينية (AV node) إلى الفروع الحزمية (Bundle Branches) في البطينين."
+                },
+                {
+                    question: "Regarding ECG limb leads:",
+                    options: [
+                        "Standard leads are aVR and AVL",
+                        "Standard limb leads are I, II and III",
+                        "Augmented leads are I II and III",
+                        "Standard leads are unipolar",
+                        "Augmented leads are bipolar"
+                    ],
+                    correctAnswer: 0,
+                    explanation: "المساري الطرفية القياسية هي I, II, III (ثنائية القطب)، بينما المساري المعززة هي aVR, aVL, aVF (أحادية القطب). العبارة الأولى خاطئة لأن aVR و aVL مساري معززة وليست قياسية."
+                },
+                {
+                    question: "Causes of VF include;",
+                    options: [
+                        "Antiarrhythmic drugs.",
+                        "IHD",
+                        "Myocardial infarction.",
+                        "Severe hypoxia.",
+                        "All of the above."
+                    ],
+                    correctAnswer: 4,
+                    explanation: "الرجفان البطيني (VF) يمكن أن يحدث بسبب: أدوية عدم انتظام ضربات القلب، مرض القلب الإقفاري (IHD)، احتشاء عضلة القلب، ونقص الأكسجين الشديد. جميع الخيارات المذكورة صحيحة."
+                },
+                {
+                    question: "What does the T wave represent in an ECG?",
+                    options: [
+                        "Ventricular depolarization",
+                        "Atrial depolarization",
+                        "Ventricular repolarization",
+                        "Atrial repolarization",
+                        "None of the above"
+                    ],
+                    correctAnswer: 2,
+                    explanation: "موجة T في تخطيط القلب تمثل إعادة استقطاب البطينين (Ventricular repolarization). إعادة الاستقطاب هي عملية استعادة العضلة القلبية لحالتها الكهربائية الأصلية بعد الانقباض."
+                },
+                {
+                    question: "Regarding Sinus tachycardia which is true",
+                    options: [
+                        "P wave morphology is abnormal",
+                        "The heart rate is less than 100/min",
+                        "Every P wave is not followed by a QRS complex",
+                        "Caused by hypothyroidism",
+                        "Could be caused by ischemia"
+                    ],
+                    correctAnswer: 4,
+                    explanation: "تسرع القلب الجيبي (Sinus tachycardia) يمكن أن يحدث بسبب نقص التروية القلبية (Ischemia). في هذه الحالة، يكون نظم القلب منتظمًا ومعدل ضربات القلب أكثر من 100/دقيقة، وموجة P طبيعية."
+                },
+                {
+                    question: "Which condition is characterized by a heart rate that increases during inspiration and decreases during expiration?",
+                    options: [
+                        "Sinus arrhythmia",
+                        "Atrial fibrillation",
+                        "Atrioventricular nodal",
+                        "Re-entry tachycardia",
+                        "Sinus bradycardia"
+                    ],
+                    correctAnswer: 0,
+                    explanation: "عدم انتظام ضربات القلب الجيبي (Sinus arrhythmia) يتميز بزيادة معدل ضربات القلب أثناء الشهيق وانخفاضه أثناء الزفير. هذه ظاهرة طبيعية شائعة عند الشباب والأطفال."
+                },
+                {
+                    question: "What is the main purpose of using 15-ECG leads?",
+                    options: [
+                        "To assess left ventricular function",
+                        "To evaluate atrial arrhythmias",
+                        "To monitor ST segment changes in the inferior leads",
+                        "To assess right ventricle and posterior wall of left ventricle",
+                        "To diagnose atrial fibrillation"
+                    ],
+                    correctAnswer: 3,
+                    explanation: "الغرض الرئيسي من استخدام 15 مسرى في تخطيط القلب هو تقييم البطين الأيمن والجدار الخلفي للبطين الأيسر. المساري الإضافية (V7-V9 و V3R-V6R) تساعد في تشخيص احتشاء هذه المناطق."
+                },
+                {
+                    question: "Lead 2 ECG strip reveal fixed R-R distance of 3 large squares, the heart rate is;",
+                    options: [
+                        "150 beats per minute.",
+                        "100 beats per minute.",
+                        "125 beats per minute.",
+                        "50 beats per minute.",
+                        "90 beats per minute."
+                    ],
+                    correctAnswer: 1,
+                    explanation: "عندما تكون المسافة بين موجتي R 3 مربعات كبيرة في تخطيط القلب، يكون معدل ضربات القلب 100/دقيقة. طريقة الحساب: 300 ÷ عدد المربعات الكبيرة بين موجتي R = 300 ÷ 3 = 100/دقيقة."
+                },
+                {
+                    question: "Which aspect of the heart is represented by ECG lead V6?",
+                    options: [
+                        "Lateral",
+                        "Inferior",
+                        "Anterior",
+                        "Posterior",
+                        "Septal"
+                    ],
+                    correctAnswer: 0,
+                    explanation: "المسرى V6 في تخطيط القلب يمثل الجدار الجانبي (Lateral) للبطين الأيسر. هذا المسرى مهم لتشخيص احتشاء الجدار الجانبي للقلب."
+                },
+                {
+                    question: "regarding the of Leads of ECG (all true except one)",
+                    options: [
+                        "Lead I-view of lateral heart",
+                        "Lead II-view of inferior heart",
+                        "Lead III-view of posterior of heart",
+                        "aVL= view lateral of the heart",
+                        "aVF= view inferior of the heart"
+                    ],
+                    correctAnswer: 2,
+                    explanation: "المسرى III يمثل الجدار السفلي (Inferior) وليس الجدار الخلفي (Posterior). الجدار الخلفي يتم تقييمه عادةً بالمساري V7-V9."
+                },
+                {
+                    question: "Which technical information should be included when reporting an ECG recording?",
+                    options: [
+                        "Patient's height and weight",
+                        "Date and time of recording, paper speed, and calibration",
+                        "Patient's favorite hobbies",
+                        "Patient's family history",
+                        "Patient's blood type"
+                    ],
+                    correctAnswer: 1,
+                    explanation: "المعلومات التقنية التي يجب تضمينها عند تسجيل تخطيط القلب تشمل: التاريخ والوقت، سرعة الورق، ومعايرة الجهاز. هذه المعلومات ضرورية للتفسير الدقيق للتخطيط."
+                },
+                {
+                    question: "regarding chest lead of ECG, what is the location of V5 lead?",
+                    options: [
+                        "Level with V4 at left anterior axillary line",
+                        "Fourth intercostal space to the left of the sternum",
+                        "Between V2 and V3",
+                        "Level with V6 at right midaxillary line",
+                        "Fifth intercostal space at right sternal border"
+                    ],
+                    correctAnswer: 0,
+                    explanation: "موقع المسرى V5 هو في نفس مستوى V4 على الخط الإبطي الأمامي الأيسر. هذا الموقع مهم لتغطية الجدار الجانبي للقلب."
+                },
+                {
+                    question: "regarding the ECG, what is the QRS wave represent?",
+                    options: [
+                        "Ventricular depolarization",
+                        "Ventricular repolarization",
+                        "Atrial depolarization",
+                        "Atrial repolarization",
+                        "None of the above"
+                    ],
+                    correctAnswer: 0,
+                    explanation: "مجموعة QRS في تخطيط القلب تمثل استقطاب البطينين (Ventricular depolarization). هذه هي المرحلة الكهربائية التي تسبق انقباض البطينين وضخ الدم للجسم."
+                },
+                {
+                    question: "regarding limb leads, electrodes attached to RA, LA, RL and LL",
+                    options: [
+                        "Will view 4 leads",
+                        "Will view 3 leads",
+                        "Will view 6 leads",
+                        "Will view 12 leads",
+                        "Will view nothing"
+                    ],
+                    correctAnswer: 1,
+                    explanation: "الأقطاب المثبتة على RA (الذراع الأيمن)، LA (الذراع الأيسر)، RL (الرجل اليمنى)، و LL (الرجل اليسرى) تسمح برؤية 3 مساري طرفية قياسية (I, II, III). المساري المعززة تُشتق من هذه الأقطاب."
+                },
+                {
+                    question: "Which part of the heart's electrical activity is primarily assessed by right-sided precordial lead VR4?",
+                    options: [
+                        "Left ventricular depolarization",
+                        "Right ventricular depolarization",
+                        "Atrial depolarization",
+                        "Ventricular repolarization",
+                        "Electrical conduction in the bundle of His"
+                    ],
+                    correctAnswer: 1,
+                    explanation: "المسرى الصدري الأيمن VR4 يُستخدم أساسًا لتقييم النشاط الكهربائي للبطين الأيمن (Right ventricular depolarization). هذا مهم لتشخيص احتشاء البطين الأيمن."
+                },
+                {
+                    question: "What is the recommended anticoagulation strategy for patients with non-valvular AF",
+                    options: [
+                        "Anticoagulation for all patients except <65 years",
+                        "Anticoagulation for low-risk patients only",
+                        "Anticoagulation for all patients",
+                        "Anticoagulation for patients aged > 65 years only",
+                        "No anticoagulation recommended"
+                    ],
+                    correctAnswer: 0,
+                    explanation: "الاستراتيجية الموصى بها للتخثر لمرضى الرجفان الأذيني غير الصمامي هي التخثر لجميع المرضى باستثناء الذين تقل أعمارهم عن 65 سنة بدون عوامل خطر أخرى. يتم استخدام نظام CHA2DS2-VASc لتقييم المخاطر."
+                },
+                {
+                    question: "Characteristic feature of sinus bradycardia (all true except)",
+                    options: [
+                        "Pulse rate <60 beat/min",
+                        "Normal P wave",
+                        "Every P wave followed by QRS",
+                        "P wave upright in Lead I",
+                        "P wave inverted in Lead II"
+                    ],
+                    correctAnswer: 4,
+                    explanation: "في بطء القلب الجيبي، موجة P تكون منتصبة في المسرى II، وليست مقلوبة. موجة P المقلوبة في المسرى II تشير إلى مصدر غير جيبي للنظم القلبي."
+                },
+                {
+                    question: "The Q wave can be identified as",
+                    options: [
+                        "One of BEG waveform",
+                        "The first positive wave",
+                        "The first negative wave",
+                        "The first negative deflection after R wave",
+                        "The first positive deflection after T wave"
+                    ],
+                    correctAnswer: 2,
+                    explanation: "موجة Q يمكن تعريفها على أنها أول موجة سالبة في مركب QRS. إذا كانت موجودة، فهي تسبق موجة R وتشير إلى الاستقطاب المبكر للحاجز بين البطينين."
+                },
+                {
+                    question: "One of the below is a type of Accelerated conduction",
+                    options: [
+                        "Sinus tachycardia",
+                        "Sinus bradycardia",
+                        "Wolff-Parkinson-White syndrome",
+                        "Atrial fibrillation",
+                        "AV heart block"
+                    ],
+                    correctAnswer: 2,
+                    explanation: "متلازمة وولف-باركنسون-وايت (WPW) هي نوع من التسارع في التوصيل القلبي بسبب وجود مسار توصيل إضافي. هذا يؤدي إلى فترة PR قصيرة وموجة دلتا على تخطيط القلب."
+                },
+                {
+                    question: "What is the purpose of the right-sided 12-Lead ECG?",
+                    options: [
+                        "To assess for possible right ventricular infarction",
+                        "To visualize the left ventricle wall",
+                        "To measure the PR interval",
+                        "To record the mechanical activity of the heart",
+                        "To assess the ST segment of the left ventricle"
+                    ],
+                    correctAnswer: 0,
+                    explanation: "الغرض من تخطيط القلب ذو الـ12 مسرى من الجانب الأيمن هو تقييم احتمال وجود احتشاء في البطين الأيمن. هذا مهم لأن احتشاء البطين الأيمن يتطلب إدارة علاجية مختلفة."
+                },
+                {
+                    question: "The characteristic features of sinus rhythm include:",
+                    options: [
+                        "HR 60-100 bpm",
+                        "P wave is upright in II",
+                        "Every P is followed by QRS",
+                        "P wave is inverted in AVR",
+                        "All of the above"
+                    ],
+                    correctAnswer: 4,
+                    explanation: "الخصائص المميزة للنظم الجيبي الطبيعي تشمل: معدل ضربات القلب 60-100/دقيقة، موجة P منتصبة في المسرى II، كل موجة P تتبعها مجموعة QRS، وموجة P مقلوبة في المسرى aVR. جميع الخيارات صحيحة."
+                },
+                {
+                    question: "ECG patient data record should include all the following except:",
+                    options: [
+                        "Identification number",
+                        "Reason for requesting the ECG",
+                        "Family history",
+                        "Patient age",
+                        "Patient name"
+                    ],
+                    correctAnswer: 2,
+                    explanation: "سجل بيانات مريض تخطيط القلب يجب أن يتضمن: رقم التعريف، سبب طلب التخطيط، عمر المريض، واسم المريض. التاريخ العائلي ليس ضروريًا للتسجيل الفوري للتخطيط."
+                }
+            ];
 
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+            // متغيرات حالة الاختبار
+            let currentQuestionIndex = 0;
+            let userAnswers = Array(questions.length).fill(null);
+            let testHistory = JSON.parse(localStorage.getItem('testHistory')) || [];
+            let testInProgress = localStorage.getItem('testInProgress') === 'true';
+            let currentTestStartTime = localStorage.getItem('currentTestStartTime');
+
+            // تهيئة الاختبار
+            function initQuiz() {
+                // إذا كان هناك اختبار قيد التقدم، استعادة الحالة
+                if (testInProgress && currentTestStartTime) {
+                    const savedAnswers = localStorage.getItem('userAnswers');
+                    if (savedAnswers) {
+                        userAnswers = JSON.parse(savedAnswers);
+                    }
                     
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const headerOffset = document.querySelector('.navbar').offsetHeight + 20;
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
+                    const savedIndex = localStorage.getItem('currentQuestionIndex');
+                    if (savedIndex) {
+                        currentQuestionIndex = parseInt(savedIndex);
+                    }
+                    
+                    showQuestion();
+                } else {
+                    // بدء اختبار جديد
+                    startNewTest();
+                }
+                
+                // عرض سجل الاختبارات
+                displayTestHistory();
+            }
+
+            // بدء اختبار جديد
+            function startNewTest() {
+                currentQuestionIndex = 0;
+                userAnswers = Array(questions.length).fill(null);
+                testInProgress = true;
+                currentTestStartTime = new Date().toISOString();
+                
+                // حفظ حالة الاختبار
+                localStorage.setItem('testInProgress', 'true');
+                localStorage.setItem('currentTestStartTime', currentTestStartTime);
+                localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+                localStorage.setItem('currentQuestionIndex', currentQuestionIndex.toString());
+                
+                showQuestion();
+            }
+
+            // عرض السؤال الحالي
+            function showQuestion() {
+                const quizSection = document.getElementById('quiz-section');
+                const question = questions[currentQuestionIndex];
+                
+                // إنشاء تقدم الاختبار
+                const progressPercentage = ((currentQuestionIndex) / questions.length) * 100;
+                
+                quizSection.innerHTML = `
+                    <div class="quiz-header">
+                        <div class="question-number">سؤال ${currentQuestionIndex + 1} من ${questions.length}</div>
+                        <div class="quiz-timer" id="quiz-timer">الوقت: 00:00</div>
+                    </div>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-bar" style="width: ${progressPercentage}%"></div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question-header">
+                            <div class="question-text">${question.question}</div>
+                            <div class="help-icon" title="اضغط للشرح">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                        </div>
+                        <div class="explanation" id="explanation">
+                            ${question.explanation}
+                        </div>
+                        <div class="options-container" id="options-container">
+                            ${question.options.map((option, index) => `
+                                <div class="option ${userAnswers[currentQuestionIndex] === index ? 'selected' : ''}" data-index="${index}">
+                                    ${String.fromCharCode(97 + index)}) ${option}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn btn-outline" id="prev-btn" ${currentQuestionIndex === 0 ? 'disabled' : ''}>
+                            <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                            السابق
+                        </button>
+                        <button class="btn btn-primary" id="next-btn">
+                            ${currentQuestionIndex === questions.length - 1 ? 'إنهاء الاختبار' : 'التالي'}
+                            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                        </button>
+                    </div>
+                `;
+                
+                // إضافة أحداث النقر للخيارات
+                document.querySelectorAll('.option').forEach(option => {
+                    option.addEventListener('click', function() {
+                        const selectedIndex = parseInt(this.getAttribute('data-index'));
+                        userAnswers[currentQuestionIndex] = selectedIndex;
+                        
+                        // تحديث التحديد البصري
+                        document.querySelectorAll('.option').forEach(opt => {
+                            opt.classList.remove('selected');
                         });
+                        this.classList.add('selected');
+                        
+                        // حفظ الإجابة
+                        localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+                    });
+                });
+                
+                // إضافة حدث النقر لأيقونة الشرح
+                document.querySelector('.help-icon').addEventListener('click', function() {
+                    const explanation = document.getElementById('explanation');
+                    explanation.classList.toggle('show');
+                });
+                
+                // إضافة أحداث النقر للأزرار
+                document.getElementById('prev-btn').addEventListener('click', goToPreviousQuestion);
+                document.getElementById('next-btn').addEventListener('click', goToNextQuestion);
+                
+                // بدء المؤقت
+                startTimer();
+            }
+
+            // الانتقال إلى السؤال السابق
+            function goToPreviousQuestion() {
+                if (currentQuestionIndex > 0) {
+                    currentQuestionIndex--;
+                    localStorage.setItem('currentQuestionIndex', currentQuestionIndex.toString());
+                    showQuestion();
+                }
+            }
+
+            // الانتقال إلى السؤال التالي أو إنهاء الاختبار
+            function goToNextQuestion() {
+                if (currentQuestionIndex < questions.length - 1) {
+                    currentQuestionIndex++;
+                    localStorage.setItem('currentQuestionIndex', currentQuestionIndex.toString());
+                    showQuestion();
+                } else {
+                    finishTest();
+                }
+            }
+
+            // إنهاء الاختبار وعرض النتائج
+            function finishTest() {
+                testInProgress = false;
+                localStorage.setItem('testInProgress', 'false');
+                
+                // حساب النتيجة
+                let score = 0;
+                questions.forEach((question, index) => {
+                    if (userAnswers[index] === question.correctAnswer) {
+                        score++;
                     }
                 });
+                
+                const percentage = (score / questions.length) * 100;
+                
+                // حفظ النتيجة في السجل (باستخدام التاريخ الميلادي)
+                const testResult = {
+                    date: new Date().toLocaleDateString('en-US'),
+                    score: score,
+                    total: questions.length,
+                    percentage: percentage.toFixed(1)
+                };
+                
+                testHistory.unshift(testResult);
+                localStorage.setItem('testHistory', JSON.stringify(testHistory));
+                
+                // عرض النتائج
+                showResults(score, percentage);
+            }
+
+            // عرض نتائج الاختبار
+            function showResults(score, percentage) {
+                const quizSection = document.getElementById('quiz-section');
+                
+                let message = "";
+                if (percentage >= 90) {
+                    message = "ممتاز! أداء رائع.";
+                } else if (percentage >= 80) {
+                    message = "جيد جداً! أداء متميز.";
+                } else if (percentage >= 70) {
+                    message = "جيد! يمكنك التحسين أكثر.";
+                } else if (percentage >= 60) {
+                    message = "مقبول! تحتاج للمزيد من الدراسة.";
+                } else {
+                    message = "ضعيف! يجب عليك مراجعة المواد الدراسية.";
+                }
+                
+                // إنشاء عرض تفصيلي للنتائج
+                let detailedResults = '';
+                questions.forEach((question, index) => {
+                    const userAnswer = userAnswers[index];
+                    const isCorrect = userAnswer === question.correctAnswer;
+                    const userAnswerText = userAnswer !== null ? question.options[userAnswer] : "لم يتم الإجابة";
+                    const correctAnswerText = question.options[question.correctAnswer];
+                    
+                    detailedResults += `
+                        <div class="question-review ${isCorrect ? 'correct' : 'incorrect'}">
+                            <div class="review-question">${index + 1}. ${question.question}</div>
+                            <div class="review-answer user-answer">
+                                <span class="answer-status ${isCorrect ? 'correct' : 'incorrect'}">${isCorrect ? '✓' : '✗'}</span>
+                                <strong>إجابتك:</strong> ${userAnswerText}
+                            </div>
+                            ${!isCorrect ? `
+                                <div class="review-answer correct-answer">
+                                    <span class="answer-status correct">✓</span>
+                                    <strong>الإجابة الصحيحة:</strong> ${correctAnswerText}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+                
+                quizSection.innerHTML = `
+                    <div class="result-container">
+                        <h2>نتيجة الاختبار</h2>
+                        <div class="result-score">${score}/${questions.length}</div>
+                        <div class="result-score">${percentage.toFixed(1)}%</div>
+                        <div class="result-message">${message}</div>
+                        <div class="result-actions">
+                            <button class="btn btn-primary" id="restart-btn">
+                                <i class="fas fa-redo" style="margin-left: 8px;"></i>
+                                إعادة الاختبار
+                            </button>
+                            <button class="btn btn-outline" id="share-btn">
+                                <i class="fab fa-telegram" style="margin-left: 8px;"></i>
+                                مشاركة النتيجة
+                            </button>
+                        </div>
+                        <div class="detailed-results">
+                            <h3>التفاصيل الكاملة للإجابات</h3>
+                            ${detailedResults}
+                        </div>
+                    </div>
+                `;
+                
+                // إضافة أحداث النقر للأزرار
+                document.getElementById('restart-btn').addEventListener('click', startNewTest);
+                document.getElementById('share-btn').addEventListener('click', shareResult);
+                
+                // تحديث سجل الاختبارات
+                displayTestHistory();
+            }
+
+            // مشاركة النتيجة على Telegram
+            function shareResult() {
+                const score = userAnswers.filter((answer, index) => 
+                    answer === questions[index].correctAnswer
+                ).length;
+                
+                const percentage = (score / questions.length) * 100;
+                
+                const shareText = `حصلت على ${score}/${questions.length} (${percentage.toFixed(1)}%) في اختبار العناية المركزة الوزاري!\n\nموقع موسوعة التخدير:\nhttps://mohamed58902.github.io/Encyclopedia-of-Anesthesia/`;
+                const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent('https://mohamed58902.github.io/Encyclopedia-of-Anesthesia/')}&text=${encodeURIComponent(shareText)}`;
+                
+                window.open(telegramUrl, '_blank');
+            }
+
+            // بدء المؤقت
+            function startTimer() {
+                const timerElement = document.getElementById('quiz-timer');
+                let startTime = currentTestStartTime ? new Date(currentTestStartTime) : new Date();
+                
+                function updateTimer() {
+                    const currentTime = new Date();
+                    const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+                    const minutes = Math.floor(elapsedTime / 60);
+                    const seconds = elapsedTime % 60;
+                    
+                    timerElement.textContent = `الوقت: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+                
+                updateTimer();
+                const timerInterval = setInterval(updateTimer, 1000);
+                
+                // تنظيف المؤقت عند إنهاء الاختبار
+                if (!testInProgress) {
+                    clearInterval(timerInterval);
+                }
+            }
+
+            // عرض سجل الاختبارات
+            function displayTestHistory() {
+                const historyList = document.getElementById('history-list');
+                
+                if (testHistory.length === 0) {
+                    historyList.innerHTML = '<p style="text-align: center; color: var(--text-color); opacity: 0.7;">لا توجد اختبارات سابقة</p>';
+                    return;
+                }
+                
+                historyList.innerHTML = testHistory.map(test => `
+                    <div class="history-item">
+                        <span class="history-date">${test.date}</span>
+                        <span class="history-score">${test.score}/${test.total} (${test.percentage}%)</span>
+                    </div>
+                `).join('');
+            }
+
+            // تحميل الأسئلة كملف PDF - فتح الرابط المطلوب
+            document.getElementById('downloadPdf').addEventListener('click', function() {
+                window.open('https://drive.google.com/file/d/100ChUAKshH89FEj4H_L_tEEQG2b3uNX9/view?usp=drive_link', '_blank');
             });
+
+            // تهيئة الاختبار عند تحميل الصفحة
+            initQuiz();
         });
     </script>
 </body>
